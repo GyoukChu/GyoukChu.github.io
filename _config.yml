@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "Gyouk Chu"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "images/gyouk_face.jpg"
   bio              : "KAIST BS in EE&MAS"
   location         : "Daejeon, Republic of Korea"
   email            : kyouwook@kaist.ac.kr
@@ -286,11 +286,16 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
       show_date: true
- 
+      use_math: true
+      toc: true
+      toc_sticky: true
+      toc_label: "Contents"
+      toc_icon: "fa-solid fa-folder"
+
 # Fix Posting Errors
 future: true
