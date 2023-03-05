@@ -30,8 +30,8 @@ feature_row:
     btn_label: "More details"
   - image_path: images/review.jpg
     alt: "Paper Review"
-    title: "딥러닝 논문 리뷰"
-    excerpt: "딥러닝 각종 분야 별 기본적인 논문들 및 최신 논문들 내용 정리 글들"
+    title: "Deep Learning Paper Review"
+    excerpt: "딥러닝 기본적인 논문들 및 최신 논문들 내용 정리 글들"
     url: "/categories/#review"
     btn_class: "btn--primary"
     btn_label: "More details"
