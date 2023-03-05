@@ -17,7 +17,7 @@ feature_row:
   - image_path: images/dcase2020.png
     alt: "DCASE2020 Task2"
     title: "DCASE2020 Task2"
-    excerpt: "DCASE2020 Task2, Unsupervised Detection of Anomalous Sounds for Machine Condition Monitoring에 대한 글들."
+    excerpt: "DCASE2020 Task2, Unsupervised Detection of Anomalous Sounds for Machine Condition Monitoring에 대한 글들"
     url: "/categories/#dcase2020-task2"
     btn_class: "btn--primary"
     btn_label: "More details"
@@ -26,6 +26,13 @@ feature_row:
     title: "CS231n Lectures(2017)"
     excerpt: "2017년 Youtube video로 올라온 Stanford Univerisity의 cs231n, CNN for VR 간단 요약 정리 글들"
     url: "/categories/#cs231n"
+    btn_class: "btn--primary"
+    btn_label: "More details"
+  - image_path: images/review.jpg
+    alt: "Paper Review"
+    title: "딥러닝 논문 리뷰"
+    excerpt: "딥러닝 각종 분야 별 기본적인 논문들 및 최신 논문들 내용 정리 글들"
+    url: "/categories/#review"
     btn_class: "btn--primary"
     btn_label: "More details"
      
