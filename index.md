@@ -14,11 +14,11 @@ excerpt: >
   For building personal sites, blogs, and portfolios.<br />
   <small>KAIST EE&MAS</small>
 feature_row:
-  - image_path: images/dcase2020.png
-    alt: "DCASE2020 Task2"
-    title: "DCASE2020 Task2"
-    excerpt: "DCASE2020 Task2, Unsupervised Detection of Anomalous Sounds for Machine Condition Monitoring에 대한 글들"
-    url: "/categories/#dcase2020-task2"
+  - image_path: images/dcase.png
+    alt: "DCASE Task2"
+    title: "DCASE Task2"
+    excerpt: "DCASE Task2, Unsupervised Anomaly Sound Detection 관련 글들"
+    url: "/categories/#dcase-task2"
     btn_class: "btn--primary"
     btn_label: "More details"
   - image_path: images/cs231n.png
