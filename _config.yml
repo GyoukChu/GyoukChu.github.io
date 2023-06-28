@@ -286,7 +286,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      publised: true
       read_time: false
       comments: true
       share: true
