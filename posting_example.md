@@ -4,7 +4,6 @@ title:  "First Posting"
 categories: blog_setting
 tag: [blog, hello_world]
 author_profile: false
-published: false
 ---
 
 **[Minimal-Mistakes Quick-start-guide]** [Github 주소](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)
