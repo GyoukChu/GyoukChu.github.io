@@ -35,6 +35,13 @@ feature_row:
     url: "/categories/#review"
     btn_class: "btn--primary"
     btn_label: "More details"
+  - image_path: images/coding.png
+    alt: "DL Implementation"
+    title: "DL Implementation"
+    excerpt: "Pytorch 딥러닝 모델 구현 관련 글들"
+    url: "/categories/#implementation"
+    btn_class: "btn--primary"
+    btn_label: "More details"
      
 ---
 {% include feature_row %}
