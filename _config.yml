@@ -328,6 +328,7 @@ filtered_bibtex_keywords:
     eprint,
     google_scholar_id,
     hal,
+    honor,
     html,
     inspirehep_id,
     pdf,

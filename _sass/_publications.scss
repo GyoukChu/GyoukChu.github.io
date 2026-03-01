@@ -65,10 +65,20 @@
           color: var(--global-theme-color) !important;
           border: 1px solid var(--global-theme-color);
         }
+
+        .award-badge {
+          background-color: transparent !important;
+          color: var(--global-theme-color) !important;
+          border: 1px solid var(--global-theme-color);
+        }
       }
 
       .title {
         font-weight: bolder;
+      }
+
+      .honor {
+        color: var(--global-theme-color);
       }
 
       .author {
