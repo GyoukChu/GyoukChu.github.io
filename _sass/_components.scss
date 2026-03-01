@@ -80,7 +80,7 @@ ul.task-list input[type="checkbox"] {
 
 @media (min-width: 576px) {
   .profile {
-    width: 22%;
+    width: 26%;
 
     .address {
       p {
@@ -218,7 +218,7 @@ ul.task-list input[type="checkbox"] {
 // About page: social icons row (matching yang-song style)
 .about-social-icons {
   font-size: 3rem;
-  margin: 0.5rem 0 0.75rem 0;
+  margin: 1.2rem 0 0.75rem 0;
 
   a {
     color: var(--global-text-color);
@@ -252,11 +252,12 @@ ul.task-list input[type="checkbox"] {
 // About page: info block sits beside floated profile image
 .about-info {
   .post-title {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .desc {
     margin-bottom: 0;
+    line-height: 1.6;
   }
 }
 
