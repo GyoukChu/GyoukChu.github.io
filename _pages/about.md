@@ -2,16 +2,16 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: |+
+  <br>
+  <strong> M.S. Student </strong> <br>
+  <strong><a href="https://mli.kaist.ac.kr/" target="_blank" rel="noopener noreferrer">Machine Learning and Intelligence Lab (MLILAB)</a></strong>
+  <br><br><br>
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -27,8 +27,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a M.S. Student at Korea Advanced Institute of Science and Technology (KAIST), advised by Prof. Eunho Yang in Machine Learning and Intelligence Lab (MLILAB), with plans to pursue a Ph.D. in the near future.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+**Previously,** I received a B.S. degree in Electrical Engineering and Mathematical Science at KAIST in 2025 (Summa Cum Laude, 1st in Department of Electrical Engineering).
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My current research interests focus on advancing the capabilities of Large Language Models. In particular, my recent research focuses on identifying tasks where current LLMs underperform and constructing the corresponding datasets and benchmarks. I am also dedicated to exploring effective Reinforcement Learning methods for reasoning models and enhancing the performance of Small Language Models through Knowledge Distillation. Ultimately, my research seeks to build upon the foundations of language modeling to pave the way toward Artificial SuperIntelligence (ASI) and beyond.
