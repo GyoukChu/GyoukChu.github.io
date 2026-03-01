@@ -26,17 +26,17 @@ layout: default
     {% endif %}
 
     <div class="about-info">
-      <h1 class="post-title">
+      <h1 class="post-title" style="margin-top: 0; margin-bottom: 0.4rem;">
         {% if site.title == 'blank' %}
           {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
         {% else %}
           {{ site.title }}
         {% endif %}
       </h1>
-      <p class="desc">{{ page.subtitle }}</p>
+      <p class="desc" style="margin-bottom: 1.2rem; line-height: 1.6;">{{ page.subtitle }}</p>
 
       {% if page.contact_links %}
-        <div class="about-social-icons">
+        <div class="about-social-icons" style="margin-top: 0; margin-bottom: 1rem;">
           {% if page.contact_links.email %}
             <a href="mailto:{{ page.contact_links.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
           {% endif %}
