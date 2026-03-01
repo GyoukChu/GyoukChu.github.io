@@ -252,12 +252,18 @@ ul.task-list input[type="checkbox"] {
 // About page: info block sits beside floated profile image
 .about-info {
   .post-title {
-    margin-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.6rem !important;
   }
 
   .desc {
-    margin-bottom: 0;
+    margin-bottom: 1rem !important;
     line-height: 1.6;
+  }
+
+  .about-social-icons {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
   }
 }
 
