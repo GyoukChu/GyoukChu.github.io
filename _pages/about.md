@@ -17,7 +17,7 @@ contact_links:
   email: kyouwook@kaist.ac.kr
   huggingface: https://huggingface.co/ChuGyouk
   linkedin: https://www.linkedin.com/in/gyouk-chu-7982112b4/
-  instagram: https://www.instagram.com/your-instagram-id
+  instagram: https://www.instagram.com/chukyouwook/
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
