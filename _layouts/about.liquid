@@ -2,52 +2,75 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
-
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+    <div class="about-intro d-flex flex-column flex-sm-row align-items-start">
+      {% if page.profile %}
+        <div class="about-profile-column">
+          <div class="profile">
+            {% if page.profile.image %}
+              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+              {% if page.profile.image_circular %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+              {% else %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+              {% endif %}
+              {% capture sizes %}(min-width: {{ site.max_width }}) 220px, 40vw{% endcapture %}
+              {%
+                include figure.liquid
+                loading="eager"
+                path=profile_image_path
+                class=profile_image_class
+                sizes=sizes
+                alt=page.profile.image
+                cache_bust=true
+              %}
+            {% endif %}
+            {% if page.profile.more_info %}
+              <div class="more-info">{{ page.profile.more_info }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="about-main-column">
+        <header class="post-header">
+          <h1 class="post-title">
+            {% if site.title == 'blank' %}
+              {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </h1>
+          <p class="desc">{{ page.subtitle }}</p>
+        </header>
+
+        {% if page.contact_links %}
+          <div class="about-social-icons">
+            {% if page.contact_links.email %}
+              <a href="mailto:{{ page.contact_links.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            {% endif %}
+            {% if page.contact_links.huggingface %}
+              <a href="{{ page.contact_links.huggingface }}" aria-label="Hugging Face">
+                <img src="https://cdn.simpleicons.org/huggingface" alt="Hugging Face">
+              </a>
+            {% endif %}
+            {% if page.contact_links.linkedin %}
+              <a href="{{ page.contact_links.linkedin }}" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            {% endif %}
+            {% if page.contact_links.instagram %}
+              <a href="{{ page.contact_links.instagram }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            {% endif %}
+          </div>
+        {% elsif page.social %}
+          <div class="social about-social-fallback">
+            <div class="contact-icons">{% social_links %}</div>
+            <div class="contact-note">{{ site.contact_note }}</div>
+          </div>
         {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+
+        <div class="clearfix">{{ content }}</div>
       </div>
-    {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
+    </div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
