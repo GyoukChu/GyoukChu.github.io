@@ -3,10 +3,8 @@ layout: about
 title: about
 permalink: /
 subtitle: |+
-  <br>
-  <strong> M.S. Student </strong> <br>
+  <strong>M.S. Student</strong><br>
   <strong><a href="https://mli.kaist.ac.kr/" target="_blank" rel="noopener noreferrer">Machine Learning and Intelligence Lab (MLILAB)</a></strong>
-  <br><br><br>
 
 profile:
   align: left

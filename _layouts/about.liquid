@@ -3,80 +3,64 @@ layout: default
 ---
 <div class="post">
   <article>
-    <div class="about-intro d-flex flex-column flex-sm-row align-items-start">
-      {% if page.profile %}
-        <div class="about-profile-column">
-          <div class="profile">
-            {% if page.profile.image %}
-              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-              {% if page.profile.image_circular %}
-                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-              {% else %}
-                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
-              {% endif %}
-              {% capture sizes %}(min-width: {{ site.max_width }}) 220px, 40vw{% endcapture %}
-              {%
-                include figure.liquid
-                loading="eager"
-                path=profile_image_path
-                class=profile_image_class
-                sizes=sizes
-                alt=page.profile.image
-                cache_bust=true
-              %}
-            {% endif %}
-            {% if page.profile.more_info %}
-              <div class="more-info">{{ page.profile.more_info }}</div>
-            {% endif %}
-          </div>
+    {% if page.profile %}
+      <div class="profile float-left">
+        {% if page.profile.image %}
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% if page.profile.image_circular %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+          {% else %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+          {% endif %}
+          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
+      30vw, 95vw"{% endcapture %}
+          {%
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+            cache_bust=true
+          %}
+        {% endif %}
+        {% if page.profile.more_info %}
+          <div class="more-info">{{ page.profile.more_info }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="about-info">
+      <h1 class="post-title">
+        {% if site.title == 'blank' %}
+          {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      <p class="desc">{{ page.subtitle }}</p>
+
+      {% if page.contact_links %}
+        <div class="about-social-icons">
+          {% if page.contact_links.email %}
+            <a href="mailto:{{ page.contact_links.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          {% endif %}
+          {% if page.contact_links.huggingface %}
+            <a href="{{ page.contact_links.huggingface }}" aria-label="Hugging Face">
+              <svg class="about-hf-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M5.963 9.32c-.057-.608.015-1.073.253-1.467.24-.397.59-.673 1.107-.839.469-.15.969-.17 1.456-.025.482.143.83.416 1.092.842.162.263.284.58.318.93l.002.02c.013.193-.138.335-.31.335-.171 0-.3-.134-.327-.307-.028-.17-.103-.396-.224-.593-.186-.3-.405-.465-.72-.558-.32-.095-.66-.08-.978.022-.362.116-.56.297-.707.54-.147.244-.203.573-.157 1.054a.312.312 0 0 1-.274.346.318.318 0 0 1-.348-.266l-.002-.013.02-.02ZM16.8 8.453c.057.608-.015 1.073-.253 1.467-.24.397-.59.673-1.107.838-.469.15-.969.171-1.456.026-.482-.143-.83-.416-1.092-.842a2.15 2.15 0 0 1-.318-.93l-.002-.02c-.013-.193.138-.336.31-.336.17 0 .3.134.327.307.028.17.103.396.224.594.186.3.405.465.72.558.32.095.66.08.978-.022.362-.116.56-.297.707-.54.148-.244.203-.574.157-1.055a.312.312 0 0 1 .274-.346.318.318 0 0 1 .348.266l.002.013-.02.022ZM7.17 6.153a.767.767 0 1 1 .002 1.535.767.767 0 0 1-.002-1.535Zm8.896 0a.767.767 0 1 1 .002 1.535.767.767 0 0 1-.002-1.535ZM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0Zm0 1.846c5.595 0 10.154 4.559 10.154 10.154S17.595 22.154 12 22.154 1.846 17.595 1.846 12 6.405 1.846 12 1.846ZM5.68 11.9c-.354.103-.696.364-.89.728-.193.363-.238.794-.085 1.254a.323.323 0 0 1-.193.413.319.319 0 0 1-.41-.193c-.212-.637-.143-1.22.116-1.706.26-.488.705-.83 1.186-.97a.319.319 0 0 1 .403.196.323.323 0 0 1-.127.278Zm12.694.728c-.193-.364-.535-.625-.889-.728a.323.323 0 0 1-.127-.278.319.319 0 0 1 .403-.196c.481.14.926.482 1.186.97.26.487.328 1.069.116 1.706a.319.319 0 0 1-.41.193.323.323 0 0 1-.193-.413c.153-.46.108-.891-.086-1.254Zm-6.33 1.475h-.088c-2.675 0-4.387.676-5.166 1.207-.125.084-.218.167-.284.244a1.26 1.26 0 0 0-.126.173c-.03.054-.043.092-.043.105a.07.07 0 0 0 .009.03c.164.395.51.824 1.058 1.22 1.084.787 2.863 1.385 4.552 1.385h.088c1.689 0 3.468-.598 4.552-1.385.548-.396.894-.825 1.058-1.22a.07.07 0 0 0 .009-.03c0-.013-.013-.05-.043-.105a1.268 1.268 0 0 0-.126-.173 2.115 2.115 0 0 0-.284-.244c-.779-.531-2.491-1.207-5.166-1.207Zm0 .648h.088c1.594 0 3.258.566 3.901 1.003.115.08.159.128.17.139a.07.07 0 0 1 .006.01.144.144 0 0 1-.024.055c-.111.25-.369.587-.84.928-.939.68-2.55 1.219-4.12 1.219h-.087c-1.571 0-3.183-.54-4.121-1.22-.472-.34-.73-.677-.841-.927a.144.144 0 0 1-.024-.055.07.07 0 0 1 .006-.01c.011-.011.055-.06.17-.139.643-.437 2.307-1.003 3.901-1.003h.088-.088Z"/></svg>
+            </a>
+          {% endif %}
+          {% if page.contact_links.linkedin %}
+            <a href="{{ page.contact_links.linkedin }}" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          {% endif %}
+          {% if page.contact_links.instagram %}
+            <a href="{{ page.contact_links.instagram }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          {% endif %}
+        </div>
+      {% elsif page.social %}
+        <div class="social">
+          <div class="contact-icons">{% social_links %}</div>
+          <div class="contact-note">{{ site.contact_note }}</div>
         </div>
       {% endif %}
-
-      <div class="about-main-column">
-        <header class="post-header">
-          <h1 class="post-title">
-            {% if site.title == 'blank' %}
-              {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
-            {% else %}
-              {{ site.title }}
-            {% endif %}
-          </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-        </header>
-
-        {% if page.contact_links %}
-          <div class="about-social-icons">
-            {% if page.contact_links.email %}
-              <a href="mailto:{{ page.contact_links.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-            {% endif %}
-            {% if page.contact_links.huggingface %}
-              <a href="{{ page.contact_links.huggingface }}" aria-label="Hugging Face">
-                <img
-                  class="about-hf-icon"
-                  src="https://cdn.simpleicons.org/huggingface"
-                  alt="Hugging Face"
-                  width="38"
-                  height="38"
-                >
-              </a>
-            {% endif %}
-            {% if page.contact_links.linkedin %}
-              <a href="{{ page.contact_links.linkedin }}" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            {% endif %}
-            {% if page.contact_links.instagram %}
-              <a href="{{ page.contact_links.instagram }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            {% endif %}
-          </div>
-        {% elsif page.social %}
-          <div class="social about-social-fallback">
-            <div class="contact-icons">{% social_links %}</div>
-            <div class="contact-note">{{ site.contact_note }}</div>
-          </div>
-        {% endif %}
-
-        <div class="clearfix">{{ content }}</div>
-      </div>
     </div>
+
+    <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}

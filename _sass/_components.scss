@@ -172,7 +172,7 @@ ul.task-list input[type="checkbox"] {
 // Social (bottom)
 
 .social {
-  text-align: center;
+  text-align: left;
 
   .contact-icons {
     font-size: 4rem;
@@ -215,94 +215,48 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-// About page hero layout (photo left, intro right)
-.about-intro {
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+// About page: social icons row (matching yang-song style)
+.about-social-icons {
+  font-size: 3rem;
+  margin: 0.5rem 0 0.75rem 0;
 
-  .about-profile-column {
-    width: 220px;
-    min-width: 220px;
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+    margin-right: 0.25rem;
+
+    i::before {
+      transition: color 0.2s ease-in-out;
+    }
+
+    .about-hf-icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.125em;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      i::before {
+        color: var(--global-theme-color);
+      }
+
+      .about-hf-icon {
+        color: var(--global-theme-color);
+      }
+    }
   }
+}
 
-  .profile {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .about-main-column {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .post-header {
-    margin-bottom: 1rem;
-  }
-
+// About page: info block sits beside floated profile image
+.about-info {
   .post-title {
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    line-height: 1.1;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
   }
 
   .desc {
     margin-bottom: 0;
-  }
-}
-
-.about-social-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 2.8rem;
-  margin: 0.75rem 0 1rem 0;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    color: var(--global-text-color);
-    text-decoration: none;
-
-    i {
-      font-size: 2.55rem;
-      line-height: 1;
-    }
-
-    .about-hf-icon {
-      width: 2.35rem !important;
-      height: 2.35rem !important;
-      max-width: 2.35rem !important;
-      min-width: 2.35rem !important;
-      max-height: 2.35rem !important;
-      min-height: 2.35rem !important;
-      object-fit: contain;
-      vertical-align: middle;
-      display: inline-block;
-      margin-bottom: 0;
-      flex-shrink: 0;
-    }
-
-    &:hover {
-      color: var(--global-theme-color);
-      text-decoration: none;
-    }
-  }
-}
-
-@media (max-width: 575px) {
-  .about-intro {
-    .about-profile-column {
-      width: 100%;
-      min-width: 0;
-      max-width: 280px;
-    }
-  }
-
-  .about-social-icons {
-    font-size: 2.2rem;
-    gap: 0.8rem;
   }
 }
 
