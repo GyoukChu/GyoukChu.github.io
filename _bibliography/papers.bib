@@ -47,3 +47,25 @@
   pdf={https://arxiv.org/abs/2509.21679},
   bibtex_show={true}
 }
+
+@article{ryu2026argument,
+  title={Argument Reconstruction as Supervision for Critical Thinking in LLMs},
+  author={Ryu*, Hyun and Chu*, Gyouk and Betz, Gregor and Yang, Eunho and Rose, Carolyn and Welleck, Sean},
+  abbr={arXiv},
+  abstract={To think critically about arguments, human learners are trained to identify, reconstruct, and evaluate arguments. Argument reconstruction is especially important because it makes an argument's underlying inferences explicit. However, it remains unclear whether LLMs can similarly enhance their critical thinking ability by learning to reconstruct arguments. To address this question, we introduce a holistic framework with three contributions. We (1) propose an engine that automatically reconstructs arbitrary arguments (GAAR), (2) synthesize a new high-quality argument reconstruction dataset (Arguinas) using the GAAR engine, and (3) investigate whether learning argument reconstruction benefits downstream critical thinking tasks. Our experimental results show that, across seven critical thinking tasks, models trained to learn argument reconstruction outperform models that do not, with the largest performance gains observed when training on the proposed Arguinas dataset. The source code and dataset will be publicly available.},
+  journal={arXiv preprint arXiv:2603.17432},
+  year={2026},
+  pdf={https://arxiv.org/abs/2603.17432},
+  bibtex_show={true}
+}
+
+@article{kim2026discounted,
+  title={Discounted Beta--Bernoulli Reward Estimation for Sample-Efficient Reinforcement Learning with Verifiable Rewards},
+  author={Kim, Haechan and Ryu, Soohyun and Chu, Gyouk and Jang, Doohyuk and Yang, Eunho},
+  abbr={arXiv},
+  abstract={Reinforcement learning with verifiable rewards (RLVR) has emerged as an effective post-training paradigm for improving the reasoning capabilities of large language models. However, existing group-based RLVR methods often suffer from severe sample inefficiency. This inefficiency stems from reliance on point estimation of rewards from a small number of rollouts, leading to high estimation variance, variance collapse, and ineffective utilization of generated responses. In this work, we reformulate RLVR from a statistical estimation perspective by modeling rewards as samples drawn from a policy-induced distribution and casting advantage computation as the problem of estimating the reward distribution from finite data. Building on this view, we propose Discounted Beta--Bernoulli (DBB) reward estimation, which leverages historical reward statistics for the non-stationary distribution. Although biased, the resulting estimator exhibits reduced and stable variance, theoretically avoids estimated variance collapse, and achieves lower mean squared error than standard point estimation. Extensive experiments across six in-distribution and three out-of-distribution reasoning benchmarks demonstrate that GRPO with DBB consistently outperforms naive GRPO, achieving average Acc@8 improvements of 3.22/2.42 points in-distribution and 12.49/6.92 points out-of-distribution on the 1.7B and 8B models, respectively, without additional computational cost or memory usage.},
+  journal={arXiv preprint arXiv:2603.18444},
+  year={2026},
+  pdf={https://arxiv.org/abs/2603.18444},
+  bibtex_show={true}
+}
