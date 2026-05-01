@@ -59,12 +59,12 @@
   bibtex_show={true}
 }
 
-@article{kim2026discounted,
+@inproceedings{kim2026discounted,
   title={Discounted Beta--Bernoulli Reward Estimation for Sample-Efficient Reinforcement Learning with Verifiable Rewards},
   author={Kim, Haechan and Ryu, Soohyun and Chu, Gyouk and Jang, Doohyuk and Yang, Eunho},
-  abbr={arXiv},
+  abbr={ICML},
   abstract={Reinforcement learning with verifiable rewards (RLVR) has emerged as an effective post-training paradigm for improving the reasoning capabilities of large language models. However, existing group-based RLVR methods often suffer from severe sample inefficiency. This inefficiency stems from reliance on point estimation of rewards from a small number of rollouts, leading to high estimation variance, variance collapse, and ineffective utilization of generated responses. In this work, we reformulate RLVR from a statistical estimation perspective by modeling rewards as samples drawn from a policy-induced distribution and casting advantage computation as the problem of estimating the reward distribution from finite data. Building on this view, we propose Discounted Beta--Bernoulli (DBB) reward estimation, which leverages historical reward statistics for the non-stationary distribution. Although biased, the resulting estimator exhibits reduced and stable variance, theoretically avoids estimated variance collapse, and achieves lower mean squared error than standard point estimation. Extensive experiments across six in-distribution and three out-of-distribution reasoning benchmarks demonstrate that GRPO with DBB consistently outperforms naive GRPO, achieving average Acc@8 improvements of 3.22/2.42 points in-distribution and 12.49/6.92 points out-of-distribution on the 1.7B and 8B models, respectively, without additional computational cost or memory usage.},
-  journal={arXiv preprint arXiv:2603.18444},
+  booktitle={Forty-third International Conference on Machine Learning},
   year={2026},
   pdf={https://arxiv.org/abs/2603.18444},
   bibtex_show={true}
