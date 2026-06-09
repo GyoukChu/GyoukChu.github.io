@@ -52,7 +52,7 @@
   title={Argument Reconstruction as Supervision for Critical Thinking in LLMs},
   author={Ryu*, Hyun and Chu*, Gyouk and Betz, Gregor and Yang, Eunho and Rose, Carolyn and Welleck, Sean},
   abbr={arXiv},
-  abstract={To think critically about arguments, human learners are trained to identify, reconstruct, and evaluate arguments. Argument reconstruction is especially important because it makes an argument's underlying inferences explicit. However, it remains unclear whether LLMs can similarly enhance their critical thinking ability by learning to reconstruct arguments. To address this question, we introduce a holistic framework with three contributions. We (1) propose an engine that automatically reconstructs arbitrary arguments (GAAR), (2) synthesize a new high-quality argument reconstruction dataset (Arguinas) using the GAAR engine, and (3) investigate whether learning argument reconstruction benefits downstream critical thinking tasks. Our experimental results show that, across seven critical thinking tasks, models trained to learn argument reconstruction outperform models that do not, with the largest performance gains observed when training on the proposed Arguinas dataset. The source code and dataset will be publicly available.},
+  abstract={To think critically about arguments, human learners are trained to identify, reconstruct, and evaluate arguments. Argument reconstruction is especially important because it makes an argument's underlying inferences explicit. However, it remains unclear whether LLMs can similarly enhance their critical thinking ability by learning to reconstruct arguments. To address this question, we introduce a holistic framework with three contributions. We (1) propose an engine that automatically reconstructs arbitrary arguments (GAAR), (2) synthesize a new high-quality argument reconstruction dataset (Arguinas) using the GAAR engine, and (3) investigate whether learning argument reconstruction benefits downstream critical thinking tasks. Our experimental results show that, across seven critical thinking tasks, models trained to learn argument reconstruction outperform models that do not, with the largest performance gains observed when training on the proposed Arguinas dataset.},
   journal={arXiv preprint arXiv:2603.17432},
   year={2026},
   pdf={https://arxiv.org/abs/2603.17432},
@@ -67,5 +67,16 @@
   booktitle={Forty-third International Conference on Machine Learning},
   year={2026},
   pdf={https://arxiv.org/abs/2603.18444},
+  bibtex_show={true}
+}
+
+@article{jang2026triage,
+  title={TRIAGE: Dialectical Reasoning for Explainable Risk Prediction on Irregularly Sampled Medical Time Series with LLMs},
+  author={Jang*, Hyeongwon and Chu*, Gyouk and Kim, Changhun and Park, Joonhyung and Yoon, Hangyul and Yang, Eunho},
+  abbr={arXiv},
+  abstract={Clinical early warning systems built on electronic health records, in which clinical observations are recorded as irregularly sampled medical time series (ISMTS), must deliver both calibrated risk scores for patient triage and interpretable rationales that clinicians can verify. Large Language Models (LLMs) have been explored for this task, yet they collapse graded clinical risk into overconfident binary predictions. This \emph{risk polarization} undermines both calibration and cross-patient comparability. To address this, we propose \textbf{TRIAGE}, a framework that trains an LLM to generate dialectical reasoning over competing clinical outcomes by eliciting outcome-specific rationales. This dialectical formulation mitigates risk polarization, enabling a single LLM to yield continuous risk scores grounded in explicit clinical reasoning. Evaluated on three ISMTS benchmarks, TRIAGE achieves an average AUPRC improvement of 3.3\% and reduces calibration error by 81\% compared to the competitive baselines. An LLM-as-a-judge assessment further shows that our rationales surpass post-hoc explanations from the baseline by 20\% in clinical reasoning quality.},
+  journal={arXiv preprint arXiv:2606.09030},
+  year={2026},
+  pdf={https://arxiv.org/abs/2606.09030},
   bibtex_show={true}
 }
