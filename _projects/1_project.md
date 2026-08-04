@@ -1,10 +1,9 @@
 ---
 layout: page
-title: project 1
-description: with background image
+title: Project 1
+description: Coming Soon
 img: assets/img/12.jpg
 importance: 1
-category: work
 related_publications: true
 ---
 
@@ -44,7 +43,7 @@ To give your project a background in the portfolio page, just add the img tag to
     This image can also have a caption. It's like magic.
 </div>
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
+You can also put regular text between your rows of images, even citations {% cite kweon2024kormedmcqa %}.
 Say you wanted to write a bit about your project before you posted the rest of the images.
 You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
 
