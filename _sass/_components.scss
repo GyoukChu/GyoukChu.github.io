@@ -80,7 +80,10 @@ ul.task-list input[type="checkbox"] {
 
 @media (min-width: 576px) {
   .profile {
-    width: 26%;
+    // Fixed px, not a % of the container: the subtitle block stays 3 lines tall
+    // as the window narrows, so a shrinking image would drop out of alignment
+    // with the contact icons. 171px keeps image height (~255px) matched to it.
+    width: 171px;
 
     .address {
       p {
@@ -256,8 +259,11 @@ ul.task-list input[type="checkbox"] {
     margin-bottom: 0.6rem !important;
   }
 
+  // Breathing room above/below the subtitle so the text block height matches
+  // the profile image height (yang-song.net achieves this with <br> padding).
   .desc {
-    margin-bottom: 1rem !important;
+    margin-top: 1.4rem !important;
+    margin-bottom: 2.8rem !important;
     line-height: 1.6;
   }
 

@@ -10,7 +10,11 @@ layout: default
 
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <!--
+      `page_title` lets a page show a different heading than its nav label
+      (e.g. nav "publications" stays lowercase, heading reads "Publications").
+    -->
+    <h1 class="post-title">{{ page.page_title | default: page.title }}</h1>
     <p class="post-description">{{ page.description }}</p>
   </header>
 

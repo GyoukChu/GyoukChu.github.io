@@ -2,6 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
+page_title: Publications
 description: (*) denotes equal contribution
 nav: true
 nav_order: 2
