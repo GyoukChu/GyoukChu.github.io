@@ -36,6 +36,6 @@ I am a M.S. Student at Korea Advanced Institute of Science and Technology (KAIST
 
 **Previously,** I received a B.S. degree in Electrical Engineering and Mathematical Science at KAIST in 2025 (*Summa Cum Laude, 1st in Department of Electrical Engineering*).
 
-My current research interests focus on advancing the capabilities of **Large Language Models (LLM)**. In particular, my recent research focuses on (1) **LLM datasets and benchmarks** (2) **LLM Post-training, especially Reinforcement Learning (RL)** and (3) **LLM Self-Evolving**.
+My current research interests focus on advancing the capabilities of **Large Language Models (LLM)**. In particular, my recent research focuses on (1) **LLM datasets and benchmarks** (2) **LLM post-training, especially Reinforcement Learning (RL) and Knowledge Distillation (KD)** and (3) **LLM Self-Evolving**.
 
 Ultimately, my research seeks to build upon the foundations of language modeling to pave the way toward **Artificial SuperIntelligence (ASI)** and beyond.

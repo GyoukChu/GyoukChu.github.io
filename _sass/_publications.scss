@@ -94,6 +94,7 @@
         > em {
           border-bottom: 1px solid;
           font-style: normal;
+          font-weight: bold;
         }
 
         > span.more-authors {
@@ -104,6 +105,13 @@
           &:hover {
             color: var(--global-text-color);
             border-bottom: 1px dashed var(--global-text-color);
+          }
+
+          // The expanded list is set in the lighter colour, so the owner's name
+          // needs the full-strength colour as well as the weight to read at all.
+          b {
+            color: var(--global-text-color);
+            font-weight: bold;
           }
         }
       }
