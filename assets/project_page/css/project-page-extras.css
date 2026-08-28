@@ -1,0 +1,231 @@
+/* index.css is now AI4CO's, which has no custom properties. The results table
+   and figure rules below were written against the newer Academic Project Page
+   Template's, so define them here -- with Bulma's and AI4CO's values, not the
+   old template's slate palette, so the tables and captions sit in the same
+   colour world as the rest of the page. */
+:root {
+  --text-primary: #363636;
+  --text-secondary: #4a4a4a;
+  --border-color: #dbdbdb;
+  --border-radius: 6px;
+}
+
+/* Additions on top of the AI4CO research-project-page-template theme.
+   Loaded after Bulma and index.css, so these rules win over both. (code.css is
+   linked after this file, but the two share no selectors.)
+
+   Loading last is not enough on its own: Bulma's `.content` typography block
+   styles bare `table`/`td`/`th` with selectors MORE specific than a plain
+   `.results-table td`, and the paper sections are Bulma `.content` blocks.
+   Measured against `.content table td` (0,1,2),
+   `.content table tbody tr:last-child td` (0,2,4) and
+   `table td:not([align])` (0,1,2), the table rules below are anchored on
+   `.table-wrapper` and reach down through `tr` so they outrank those without
+   needing !important.
+
+   CONSEQUENCE, and it is not optional: a `.results-table` written WITHOUT the
+   `.table-wrapper` parent loses every anchored rule and silently falls back to
+   Bulma's grid -- no top or bottom rule, no under-header rule, a line under
+   every row, left-aligned numbers, Bulma's padding. Measured: `.best` and
+   `.second` DO survive, because those two rules below are deliberately left
+   un-anchored. The wrapper is part of the markup contract, not decoration. */
+
+/* --- Section layout --------------------------------------------------- */
+
+/* AI4CO nests the teaser as .hero > .container > .hero-body. The container is
+   then a flex item with auto cross-axis margins, so it shrink-to-fits its
+   content -- a teaser image narrower than the column renders inset while every
+   other section spans the full 960px. */
+.teaser .container {
+  width: 100%;
+}
+
+/* The abstract is the only .section.hero, and it carries a .hero-body wrapper
+   that AI4CO lacks (without it Bulma's auto margins collapse the column). The
+   wrapper's own padding would double .section's, so zero it and keep AI4CO's
+   48px rhythm. */
+.section.hero > .hero-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* --- Results tables -------------------------------------------------- */
+
+/* Wrap every table in .table-wrapper so wide result tables scroll instead of
+   forcing the whole page to scroll sideways on a phone. */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper .results-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 100%;
+}
+
+.table-wrapper .results-table th,
+.table-wrapper .results-table td {
+  padding: 0.5rem 0.9rem;
+  border: none;
+}
+
+/* Numbers must not wrap mid-value; a long method name in the first column
+   should grow the row instead of forcing the table into a scroll. */
+.table-wrapper .results-table tr th:not(:first-child),
+.table-wrapper .results-table tr td:not(:first-child) {
+  white-space: nowrap;
+}
+
+/* booktabs: horizontal rules only, heavier at the top and bottom. Requires an
+   explicit <thead> and <tbody> -- the HTML parser supplies <tbody> but never
+   <thead>, and a table of bare <tr> rows loses the header rules entirely. */
+.table-wrapper .results-table thead tr:first-child th {
+  border-top: 2px solid var(--text-primary);
+}
+
+.table-wrapper .results-table thead tr:last-child th {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-wrapper .results-table tbody tr:last-child td {
+  border-bottom: 2px solid var(--text-primary);
+}
+
+/* Optional horizontal rule between blocks of rows, as \midrule would give. */
+.table-wrapper .results-table tbody tr.rule-above td {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Two-row grouped header (Benchmark | Qwen3-4B x4 | Qwen3-8B x4). The corner
+   th spans both rows via rowspan, so it sits in thead tr:first-child and the
+   tr:last-child under-header rule never reaches it -- the header underline
+   would stop short of the first column. Drawn here instead; a rowspan'd cell's
+   bottom border paints at the bottom of the last row it spans, which is
+   exactly where the tr:last-child rule paints for the other columns. */
+.table-wrapper .results-table thead th[rowspan] {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-wrapper .results-table tr th {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* First column is the method name; everything after it is a number. */
+.table-wrapper .results-table tr td {
+  text-align: right;
+}
+
+.table-wrapper .results-table tr th:first-child,
+.table-wrapper .results-table tr td:first-child {
+  text-align: left;
+}
+
+/* Block label spanning the full row, as the paper's
+   \multicolumn{9}{c}{\textit{Mathematical Reasoning}} rows. Same specificity
+   as the td:first-child rule above (the label cell IS a first child), so this
+   MUST stay below it in the file -- source order is the tiebreaker. */
+.table-wrapper .results-table tr td.group-label {
+  text-align: center;
+  font-style: italic;
+}
+
+/* Bulma sets neither font-weight nor text-decoration on a td, so these need no
+   anchor and keep working in any table that carries the classes. */
+.results-table .best {
+  font-weight: 700;
+}
+
+.results-table .second {
+  text-decoration: underline;
+}
+
+/* Caption line under a results table -- the paper's \caption text. Bulma's
+   .content p carries no size or colour of its own, so this needs no anchor. */
+.table-note {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* --- Figures --------------------------------------------------------- */
+
+/* Anchored on `.content` to outrank Bulma's `.content figure:not(:first-child)`
+   and `:not(:last-child)` margin rules (0,2,1); `figure.project-figure` (0,1,1)
+   wins the side margins but loses top and bottom, which only shows up in a
+   section whose font-size is not 16px. */
+.content figure.project-figure,
+figure.project-figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+figure.project-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* AI4CO captions images with <h2 class="subtitle has-text-centered">, which
+   computes to 20px, rgb(74,74,74), centred. Match that rather than the smaller
+   left-aligned academic convention. */
+figure.project-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  font-style: normal;
+  color: var(--text-secondary);
+  text-align: center;
+  /* AI4CO's theme has no .hero{overflow:hidden}, but a long unbroken token --
+     a model or checkpoint name -- should still wrap rather than overflow. */
+  overflow-wrap: anywhere;
+}
+
+/* Attribution line tucked under a figure's bottom-right corner, between the
+   image and its caption (e.g. "§ Images generated by ..."). The image spans
+   the full figure width, so right-aligning the line puts it flush with the
+   image's right edge. */
+.project-figure .figure-credit {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* A paper-length caption (several sentences) at 20px centred is unreadable;
+   set multi-sentence captions in body size, justified like the paper's own
+   \caption blocks. One-liners keep the AI4CO subtitle style above. */
+figure.project-figure figcaption.is-long {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+/* A figcaption may opt into the table-caption size instead of either figure
+   style above. The unanchored `.table-note` (0,1,0) loses to
+   `figure.project-figure figcaption` (0,1,2), so the size and centring have to
+   be restated here; the colour is already shared. */
+figure.project-figure figcaption.table-note {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* --- MathJax --------------------------------------------------------- */
+
+/* A long display equation should scroll inside its own box rather than widen
+   the page. */
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* --- Footer navigation ----------------------------------------------- */
+
+.project-page-nav {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}

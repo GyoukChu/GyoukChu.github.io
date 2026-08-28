@@ -1,0 +1,152 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  Same policy al-folio applies site-wide via _includes/head.liquid. This page
+  bypasses that include, so without this line it would be the only page on the
+  site with no CSP at all.
+-->
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"
+>
+
+<!--
+  escape matters here even though <title> is RCDATA: jekyll-minifier reparses
+  the document, so a `<` in the title becomes a real element and emits a
+  matching close tag.
+-->
+<title>
+  {{ page.title | escape }}
+  |
+  {{ site.first_name }}
+  {{ site.last_name }}
+</title>
+<meta name="description" content="{{ page.description | escape }}">
+{% if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords | escape }}">
+{% endif %}
+{% assign author_names = page.authors | map: 'name' | join: ', ' %}
+{% if author_names != '' %}
+  <meta name="author" content="{{ author_names | escape }}">
+{% endif %}
+
+{% assign og_image_path = page.og_image | default: page.img %}
+{% if og_image_path %}
+  {% assign og_image = og_image_path | absolute_url %}
+{% endif %}
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{% if og_image %}
+  <meta property="og:image" content="{{ og_image }}">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | escape }}">
+<meta name="twitter:description" content="{{ page.description | escape }}">
+{% if og_image %}
+  <meta name="twitter:image" content="{{ og_image }}">
+{% endif %}
+
+<!--
+  Same two branches al-folio's _includes/head.liquid uses for site.icon. This
+  page bypasses that include, so without them it would be the only page on the
+  site with no favicon.
+-->
+{% if site.icon != blank %}
+  {% if site.icon.size <= 4 %}
+    <link
+      rel="shortcut icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
+    >
+  {% else %}
+    <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache }}">
+  {% endif %}
+{% endif %}
+
+<!-- Bulma and the AI4CO research-project-page-template theme, vendored -->
+{% comment %}
+  AI4CO also ships bulma-carousel and bulma-slider. Both are omitted: nothing on this
+  page uses them, and they cost 65 KB of dead requests on every visit. To add a results
+  carousel later, copy static/css/bulma-carousel.min.css and
+  static/js/bulma-carousel.min.js out of the template into assets/project_page/, link
+  them below, and restore the bulmaCarousel.attach call in project-page.js.
+{% endcomment %}
+<link rel="stylesheet" href="{{ '/assets/project_page/css/bulma.min.css' | relative_url | bust_file_cache }}">
+
+<!-- Icons: academicons is al-folio's local copy, FontAwesome comes from the CDN -->
+<link rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url | bust_file_cache }}">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+  integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA="
+  crossorigin="anonymous"
+>
+
+<!--
+  AI4CO's font trio. Google Fonts serves `Google Sans` through the API even
+  though it is absent from the public catalogue -- the request returns 200 with
+  all three families. Do not "fix" it to a catalogue font.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+
+<!-- Theme last so it wins over Bulma, our overrides last of all -->
+<link rel="stylesheet" href="{{ '/assets/project_page/css/index.css' | relative_url | bust_file_cache }}">
+<link rel="stylesheet" href="{{ '/assets/project_page/css/project-page-extras.css' | relative_url | bust_file_cache }}">
+<link rel="stylesheet" href="{{ '/assets/project_page/css/code.css' | relative_url | bust_file_cache }}">
+
+<!--
+  highlight.js, same version and theme al-folio pins in _config.yml. Hashes
+  recomputed from the CDN bytes; the CSS one matches
+  site.third_party_libraries.highlightjs.integrity.css.light exactly.
+  Only the BibTeX block (language-text) runs through it today; to add a code
+  cell in another language, also load its grammar, e.g.
+  cdn-assets@11.9.0/languages/python.min.js
+  with integrity sha256-1J2LSMk0eMzZibQdpI9f7EsNHr2Ya1t2TRjwUI5R/24=.
+-->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+  integrity="sha256-Oppd74ucMR5a5Dq96FxjEzGF7tTw2fZ/6ksAqDCM8GY="
+  crossorigin="anonymous"
+>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"
+  integrity="sha256-g3pvpbDHNrUrveKythkPMF2j/J7UFoHbUyFQcFe1yEY="
+  crossorigin="anonymous"
+></script>
+
+<script defer src="{{ '/assets/project_page/js/project-page.js' | relative_url | bust_file_cache }}"></script>
+
+<!--
+  MathJax 3.2.2, pinned to the same version and SRI hash as
+  site.third_party_libraries.mathjax in _config.yml. The config object has to be
+  a plain, non-deferred script and has to come before the loader.
+-->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [
+        ['\\[', '\\]'],
+        ['$$', '$$'],
+      ],
+      tags: 'ams',
+    },
+    options: {
+      // `pre` keeps MathJax off the BibTeX block.
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    },
+  };
+</script>
+<script
+  async
+  id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
+  integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
+  crossorigin="anonymous"
+></script>

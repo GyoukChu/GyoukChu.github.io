@@ -1,0 +1,21 @@
+<!doctype html>
+<!--
+  Standalone Bulma document for academic paper pages. It deliberately does not
+  inherit default.liquid: al-folio's Bootstrap stylesheet and theme.js are
+  pulled in only by _includes/head.liquid, so staying out of that chain is what
+  keeps Bulma intact and leaves this page light-only while the rest of the site
+  keeps its dark mode toggle.
+-->
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    {% include project_page/head.liquid %}
+  </head>
+  <body>
+    {% include project_page/hero.liquid %}
+
+    {{ content }}
+
+    {% include project_page/bibtex.liquid %}
+    {% include project_page/footer.liquid %}
+  </body>
+</html>

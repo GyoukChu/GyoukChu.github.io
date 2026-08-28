@@ -1,0 +1,685 @@
+---
+layout: project_page
+
+# --- al-folio /projects/ index card ---
+title: "J-Zero: Unified Challenger–Solver–Judge Co-Evolution from Zero Data"
+# Short name for the /projects/ index card; the page itself keeps the full title.
+card_title: J-Zero
+description: "Sustained LLM self-play without collapse: a unified Challenger–Solver–Judge co-evolution framework across both verifiable and unverifiable domains without any external data."
+img: assets/img/jzero-overview.png
+importance: 1
+# --- hero ---
+authors:
+  - name: Gyouk Chu
+    url: https://gyoukchu.github.io
+    affiliations: [1]
+    equal_contribution: true
+  - name: Myeongho Jeon
+    url: https://myeongho.com/
+    affiliations: [1]
+    equal_contribution: true
+  - name: Eunho Yang
+    url: https://mli.kaist.ac.kr/people/
+    affiliations: [1]
+affiliations:
+  - KAIST
+venue: Preprint
+# Paper and arXiv both point at the arXiv abstract page. GitHub and Hugging Face
+# are the URLs the paper draft links to.
+links:
+  - label: Paper
+    icon: fas fa-file-pdf
+    url: https://arxiv.org/abs/2608.26582
+  - label: Hugging Face
+    emoji: "🤗"
+    url: https://huggingface.co/collections/ChuGyouk/j-zero
+  - label: GitHub
+    icon: fab fa-github
+    url: https://github.com/GyoukChu/J-Zero
+  - label: arXiv
+    icon: ai ai-arxiv
+    url: https://arxiv.org/abs/2608.26582
+
+bibtex: |
+  @article{chu2026jzero,
+    title   = {J-Zero: Unified Challenger--Solver--Judge Co-Evolution from Zero Data},
+    author  = {Chu, Gyouk and Jeon, Myeongho and Yang, Eunho},
+    journal = {arXiv preprint arXiv:2608.26582},
+    year    = {2026}
+  }
+
+# --- SEO ---
+og_image: assets/project_page/images/j_zero/teaser.jpg
+keywords: self-evolving LLMs, self-play, reward models, LLM-as-a-judge, J-Zero
+---
+
+{% comment %}
+  This block is a Liquid comment, not an HTML one, so Jekyll strips it at build time
+  and it never reaches the browser. Keep it that way: as an HTML comment it was ~6KB
+  of the served page, and its example markup was matching the verification script's
+  patterns on its own, which made five checks pass without help from the real page.
+
+  Standalone academic project page, built on the AI4CO research-project-page-template
+  (https://github.com/ai4co/research-project-page-template), which is itself a fork of
+  eliahuhorwitz/Academic-project-page-template.
+
+  This page does NOT inherit al-folio's default.liquid, which is what keeps Bootstrap
+  and dark mode off it while every other page keeps them. Never add al-folio's
+  head/header/footer/scripts includes here.
+
+  CONTENT SOURCE
+    Text, tables, and figures come from the paper draft at
+    ~/gyouk_workspace/project_1_source/paper_overleaf (not part of this repo).
+    Figures were rendered with pdftoppm at 150 dpi; the teaser is pages 1 and 2 of
+    images/J-Zero-demo-figure.pdf stitched side by side. The card thumbnail
+    assets/img/jzero-overview.png is a copy of the methodology figure, placed under
+    assets/img/ so al-folio's imagemagick pipeline can build its responsive variants.
+
+  STILL PLACEHOLDER (pre-arXiv): the Paper and arXiv hero links ("#"), the bibtex
+  entry (arXiv id + bibtex_placeholder flag), and venue: Preprint.
+
+  FRONT MATTER CONTRACT
+    title / description / img / importance   also feed the /projects/ index card
+    card_title       optional short name shown ONLY on the index card
+    authors[]        name, url?, affiliations? (1-based indices), equal_contribution?
+    affiliations[]   strings; the superscript number comes from array position
+    venue            string, optional
+    links[]          label, url, and one of: icon (FontAwesome/academicons class)
+                     or emoji (raw character, e.g. the 🤗 Hugging Face button)
+    bibtex           YAML block scalar; rendered escaped inside the copy block
+    og_image / keywords   optional, for social cards
+  Every field except title is optional and renders nothing when absent.
+
+  TO ADD ANOTHER PAPER PAGE
+    Copy this file to _projects/<slug>.html -- the filename IS the URL
+    (/projects/<slug>/), so pick the slug you want published. Change the front
+    matter, replace the section bodies, and put the page's figures in their own
+    assets/project_page/images/<slug>/ directory. The layout, includes, CSS, and JS
+    are all shared and front-matter driven; no other source file needs changing.
+    bin/verify-project-page.sh is the one deliberate exception: its "page data"
+    group pins THIS page's front matter (author link, KAIST, arXiv icon, citation
+    key chu2026jzero), so run it against another page as
+    `bin/verify-project-page.sh http://localhost:8080/projects/<slug>/` and expect
+    exactly those to fail.
+
+  RESULTS CONVENTIONS -- these are load-bearing; verify-project-page.sh pins them
+    <div class="table-wrapper"><table class="results-table"><thead>...</thead><tbody>
+      The wrapper is mandatory: every booktabs and alignment rule is anchored on it,
+      and without it the table silently falls back to Bulma's grid. (`.best` and
+      `.second` are the two deliberate exceptions -- those rules are un-anchored and
+      keep working in any table carrying the classes.) The explicit <thead> is
+      mandatory too: the parser supplies <tbody> but never <thead>, and bare <tr>
+      rows lose both header rules.
+    <td class="best">  bold     <td class="second">  underlined
+    <tr class="rule-above">     draws a \midrule above that row
+    <td class="group-label" colspan=N>   centred italic block label, as the paper's
+                                         \multicolumn{...}{c}{\textit{...}} rows
+    A rowspan'd corner th (the "Benchmark" cell under two header rows) gets its
+    under-header rule from the th[rowspan] rule in project-page-extras.css.
+    Math: \(inline\), \[display\] -- MathJax 3.2.2, kept instead of AI4CO's KaTeX
+      so the whole site uses one renderer. This file is .html and not .md precisely so
+      kramdown never runs and LaTeX survives verbatim.
+
+  COPY BLOCKS
+    <div class="code-container"><pre><code class="code-content language-text">
+    plus a .copy-button and .copy-tooltip. initCopyButtons() in project-page.js wires
+    every one of them; today only the BibTeX block uses the markup, but any code cell
+    added later gets the same treatment. language-text stops highlight.js guessing a
+    grammar -- without it a BibTeX entry is auto-detected as Ruby.
+
+  ONE MORE INVISIBLE DEPENDENCY
+    The hero's affiliation span carries `affiliation-block` alongside `author-block`.
+    It has no styling; it exists so the verification script can tell that span apart
+    from a real author. Do not remove it as decorative.
+{% endcomment %}
+
+<!-- Teaser -->
+<!-- AI4CO's shape: .container OUTSIDE .hero-body, so `.teaser .hero-body`'s
+     zeroed top padding pulls the figure up under the hero. The container is a
+     direct child of .hero here, so Bulma's auto cross-axis margins would collapse
+     it to content width; `.teaser .container { width: 100% }` in
+     project-page-extras.css is what holds it at the full 960px. -->
+<section class="hero teaser" id="teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure class="project-figure">
+        <img
+          loading="eager"
+          src="{{ '/assets/project_page/images/j_zero/teaser.jpg' | relative_url }}"
+          alt="Left: a frozen Judge is a wall that stops the Solver and Challenger from improving. Right: a co-evolving Judge breaks that wall, and all three keep growing together."
+        />
+        <div class="figure-credit">§ Images generated by gpt-image-2</div>
+        <figcaption class="is-italic">
+          Frozen Judge set the upper bound of self-evolving LLMs. By co-evolving Judge with the current frontier of
+          self-evolution, a highly performant and sustained self-evolution can be realized.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<!-- End teaser -->
+
+<!-- Abstract -->
+<section class="section hero is-light" id="abstract">
+  <!-- The .hero-body wrapper is not cosmetic. Bulma's .hero is a flex column and
+       .container carries `margin: 0 auto`; auto cross-axis margins disable
+       align-items:stretch, so a .container placed directly under .hero
+       shrink-to-fits its text. A short abstract then renders as a ~250px ribbon
+       while every other section spans 960px. -->
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Self-evolving language models have recently emerged as a promising path toward superintelligence, with
+              the advantage of reducing the cost of human supervision. While considerable progress has been made in
+              verifiable domains, self-evolution in unverifiable domains remains substantially less explored. We
+              propose <strong>J</strong>udge co-adaptation from <strong>Zero</strong> data (J-Zero), a unified
+              Challenger–-Solver–-Judge co-evolution framework that supports self-improvement across both domains. The
+              Challenger and Solver co-evolve through an adversarial interaction: the Challenger generates
+              increasingly difficult tasks, while the Solver learns to produce higher-quality responses to them. In
+              parallel, the Judge co-adapts using preference pairs whose ordering is known in advance from how each
+              response was produced, <em>i.e.</em>, the Solver's answer over the Challenger's, and its
+              decomposed-and-recombined answer over its one-shot answer, rather than from the Judge's own scores.
+              J-Zero outperforms the baselines by an average of 4.2 points on verifiable and 8.0 points on
+              unverifiable domains, and continues to improve through at least ten iterations, whereas the baselines
+              degrade after two.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End abstract -->
+
+<!-- Methodology -->
+<section class="hero is-small" id="methodology">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Methodology</h2>
+      <figure class="project-figure">
+        <img
+          loading="lazy"
+          src="{{ '/assets/project_page/images/j_zero/overview.png' | relative_url }}"
+          alt="Overview of J-Zero: the Challenger, Solver, and Judge are updated in turn inside one self-play loop."
+        />
+        <figcaption class="is-long">
+          An overview of J-Zero, in which the Challenger, Solver, and Judge are jointly updated through iterative
+          self-play. <strong>Top and Middle:</strong> In the Challenger and Solver training phases, the two policies
+          are trained adversarially under the frozen Judge. The Challenger generates tasks on which the Solver scores
+          poorly, and the Solver learns to recover high scores on those tasks. <strong>Bottom:</strong> In the Judge
+          training phase, the Judge is updated on two types of in-loop preference pairs, role asymmetry
+          (\(\mathcal{D}_{\mathrm{role}}\)) and subtask amplification (\(\mathcal{D}_{\mathrm{amp}}\)), so that its
+          evaluation ability rises in step with the two policies it supervises.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<!-- End methodology -->
+
+<!-- Results -->
+<section class="hero is-small" id="results">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Results</h2>
+
+      <div class="content has-text-justified">
+        <p>
+          We evaluate J-Zero on Qwen3-4B-Base and Qwen3-8B-Base against the base model and two representative
+          zero-data self-play frameworks, R-Zero and G-Zero, across 11 verifiable and 3 unverifiable benchmarks.
+          J-Zero attains the best score on every benchmark group at both scales.
+        </p>
+        <p>
+          <strong>Verifiable domain.</strong> J-Zero improves the average performance in verifiable domains by
+          <strong>9.47</strong> and <strong>7.88</strong> points over the corresponding base models (Qwen3-4B-Base
+          and Qwen3-8B-Base, respectively), while outperforming R-Zero by <strong>4.74</strong> and
+          <strong>3.56</strong> points, respectively. Notably, J-Zero surpasses R-Zero even though R-Zero is
+          specifically designed for self-evolution in verifiable domains.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Benchmark</th>
+              <th colspan="4">Qwen3-4B-Base</th>
+              <th colspan="4">Qwen3-8B-Base</th>
+            </tr>
+            <tr>
+              <th>Base Model</th>
+              <th>R-Zero</th>
+              <th>G-Zero</th>
+              <th>J-Zero (ours)</th>
+              <th>Base Model</th>
+              <th>R-Zero</th>
+              <th>G-Zero</th>
+              <th>J-Zero (ours)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="group-label" colspan="9">Mathematical Reasoning</td>
+            </tr>
+            <tr>
+              <td>GSM8K</td>
+              <td>86.96</td>
+              <td class="best">92.34</td>
+              <td>90.22</td>
+              <td>92.04</td>
+              <td>91.66</td>
+              <td class="best">93.86</td>
+              <td>93.33</td>
+              <td>92.95</td>
+            </tr>
+            <tr>
+              <td>MATH500</td>
+              <td>75.60</td>
+              <td>77.80</td>
+              <td>74.80</td>
+              <td class="best">79.80</td>
+              <td>72.20</td>
+              <td>79.40</td>
+              <td>76.40</td>
+              <td class="best">83.40</td>
+            </tr>
+            <tr>
+              <td>Minerva</td>
+              <td>45.22</td>
+              <td>52.57</td>
+              <td>47.06</td>
+              <td class="best">54.04</td>
+              <td>48.90</td>
+              <td>57.35</td>
+              <td>48.53</td>
+              <td class="best">61.76</td>
+            </tr>
+            <tr>
+              <td>OlympiadBench</td>
+              <td>41.39</td>
+              <td>44.36</td>
+              <td>41.10</td>
+              <td class="best">47.18</td>
+              <td>40.95</td>
+              <td>44.96</td>
+              <td>44.21</td>
+              <td class="best">53.12</td>
+            </tr>
+            <tr>
+              <td>AMC23</td>
+              <td>45.39</td>
+              <td>52.50</td>
+              <td>47.81</td>
+              <td class="best">53.36</td>
+              <td>44.92</td>
+              <td>56.56</td>
+              <td>49.77</td>
+              <td class="best">60.62</td>
+            </tr>
+            <tr>
+              <td>AIME24</td>
+              <td>8.96</td>
+              <td>11.04</td>
+              <td>11.15</td>
+              <td class="best">16.15</td>
+              <td>10.52</td>
+              <td>13.96</td>
+              <td>12.71</td>
+              <td class="best">19.58</td>
+            </tr>
+            <tr>
+              <td>AIME25</td>
+              <td>6.67</td>
+              <td>7.92</td>
+              <td>7.50</td>
+              <td class="best">15.83</td>
+              <td>8.96</td>
+              <td>12.29</td>
+              <td>10.83</td>
+              <td class="best">15.94</td>
+            </tr>
+            <tr class="rule-above">
+              <td><strong>Average</strong></td>
+              <td>44.31</td>
+              <td>48.36</td>
+              <td>45.66</td>
+              <td class="best">51.20</td>
+              <td>45.44</td>
+              <td>51.20</td>
+              <td>47.97</td>
+              <td class="best">55.34</td>
+            </tr>
+            <tr class="rule-above">
+              <td class="group-label" colspan="9">General Reasoning</td>
+            </tr>
+            <tr>
+              <td>MMLU-Pro</td>
+              <td>51.70</td>
+              <td>55.55</td>
+              <td>54.14</td>
+              <td class="best">58.60</td>
+              <td>58.97</td>
+              <td>60.92</td>
+              <td>59.44</td>
+              <td class="best">63.80</td>
+            </tr>
+            <tr>
+              <td>SuperGPQA</td>
+              <td>26.53</td>
+              <td>28.63</td>
+              <td>27.56</td>
+              <td class="best">29.35</td>
+              <td>30.45</td>
+              <td>31.87</td>
+              <td>31.24</td>
+              <td class="best">33.22</td>
+            </tr>
+            <tr>
+              <td>BBH</td>
+              <td>50.88</td>
+              <td>64.35</td>
+              <td>58.90</td>
+              <td class="best">70.85</td>
+              <td>66.21</td>
+              <td>71.31</td>
+              <td>66.15</td>
+              <td class="best">78.38</td>
+            </tr>
+            <tr class="rule-above">
+              <td><strong>Average</strong></td>
+              <td>43.04</td>
+              <td>49.51</td>
+              <td>46.87</td>
+              <td class="best">52.93</td>
+              <td>51.88</td>
+              <td>54.70</td>
+              <td>52.28</td>
+              <td class="best">58.47</td>
+            </tr>
+            <tr class="rule-above">
+              <td class="group-label" colspan="9">Instruction Following</td>
+            </tr>
+            <tr>
+              <td>Prompt Strict</td>
+              <td>40.11</td>
+              <td>42.33</td>
+              <td>40.85</td>
+              <td class="best">50.65</td>
+              <td>46.40</td>
+              <td>50.46</td>
+              <td class="best">51.57</td>
+              <td>49.72</td>
+            </tr>
+            <tr>
+              <td>Instruction Strict</td>
+              <td>51.08</td>
+              <td>54.20</td>
+              <td>52.64</td>
+              <td class="best">60.91</td>
+              <td>58.15</td>
+              <td>61.63</td>
+              <td class="best">63.19</td>
+              <td>62.71</td>
+            </tr>
+            <tr>
+              <td>Prompt Loose</td>
+              <td>43.99</td>
+              <td>48.43</td>
+              <td>47.32</td>
+              <td class="best">57.86</td>
+              <td>51.76</td>
+              <td>57.12</td>
+              <td>54.90</td>
+              <td class="best">61.92</td>
+            </tr>
+            <tr>
+              <td>Instruction Loose</td>
+              <td>54.32</td>
+              <td>59.23</td>
+              <td>58.03</td>
+              <td class="best">66.55</td>
+              <td>62.47</td>
+              <td>67.03</td>
+              <td>66.19</td>
+              <td class="best">73.02</td>
+            </tr>
+            <tr class="rule-above">
+              <td><strong>Average</strong></td>
+              <td>47.38</td>
+              <td>51.05</td>
+              <td>49.71</td>
+              <td class="best">58.99</td>
+              <td>54.70</td>
+              <td>59.06</td>
+              <td>58.96</td>
+              <td class="best">61.84</td>
+            </tr>
+            <tr class="rule-above">
+              <td><strong>Overall Avg.</strong></td>
+              <td>44.91</td>
+              <td>49.64</td>
+              <td>47.41</td>
+              <td class="best">54.38</td>
+              <td>50.67</td>
+              <td>54.99</td>
+              <td>53.07</td>
+              <td class="best">58.55</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content has-text-justified">
+        <p class="table-note">
+          Results across verifiable domains. The <em>Overall</em> score is the mean of the three domain averages.
+          <strong>Best results</strong> are in bold.
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="content has-text-justified">
+        <p>
+          <strong>Unverifiable domain.</strong> Baselines achieve much smaller gains in the unverifiable domain
+          compared to the verifiable one, and this is where the gap to J-Zero is widest. R-Zero relies on a
+          majority-vote reward that does not extend to open-ended tasks, so its unverifiable average improves by only
+          3.08 and 2.31 points, roughly half of what it gains on the verifiable side. G-Zero achieves even smaller
+          gains of 1.31 and 2.08 points, which leaves it behind R-Zero and barely above the base model, since
+          G-Zero does not employ the Judge at all. J-Zero improves the average performance in unverifiable domains by
+          <strong>11.23</strong> and <strong>10.18</strong> points, respectively, with the largest gains observed on
+          AlpacaEval 2.0 (6.22 → 28.56 and 12.93 → 33.53), a broad general instruction-following benchmark that
+          covers diverse open-ended tasks while also including tasks in math and factual knowledge.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Benchmark</th>
+              <th colspan="4">Qwen3-4B-Base</th>
+              <th colspan="4">Qwen3-8B-Base</th>
+            </tr>
+            <tr>
+              <th>Base Model</th>
+              <th>R-Zero</th>
+              <th>G-Zero</th>
+              <th>J-Zero (ours)</th>
+              <th>Base Model</th>
+              <th>R-Zero</th>
+              <th>G-Zero</th>
+              <th>J-Zero (ours)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AlpacaEval</td>
+              <td>6.22</td>
+              <td>11.38</td>
+              <td>9.20</td>
+              <td class="best">28.56</td>
+              <td>12.93</td>
+              <td>18.37</td>
+              <td>18.39</td>
+              <td class="best">33.53</td>
+            </tr>
+            <tr>
+              <td>ArenaHard (H.P.)</td>
+              <td>2.50</td>
+              <td>2.50</td>
+              <td>3.00</td>
+              <td class="best">4.80</td>
+              <td>4.00</td>
+              <td>5.70</td>
+              <td>4.40</td>
+              <td class="best">6.90</td>
+            </tr>
+            <tr>
+              <td>ArenaHard (C.W.)</td>
+              <td>0.90</td>
+              <td>1.50</td>
+              <td>1.40</td>
+              <td class="best">2.20</td>
+              <td>1.70</td>
+              <td>2.20</td>
+              <td>2.20</td>
+              <td class="best">3.90</td>
+            </tr>
+            <tr>
+              <td>EQBench C.W.</td>
+              <td>20.83</td>
+              <td>24.59</td>
+              <td>21.26</td>
+              <td class="best">30.36</td>
+              <td>23.92</td>
+              <td>24.30</td>
+              <td>24.25</td>
+              <td class="best">31.31</td>
+            </tr>
+            <tr class="rule-above">
+              <td><strong>Overall Avg.</strong></td>
+              <td>9.58</td>
+              <td>12.66</td>
+              <td>10.89</td>
+              <td class="best">20.81</td>
+              <td>13.23</td>
+              <td>15.54</td>
+              <td>15.31</td>
+              <td class="best">23.41</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content has-text-justified">
+        <p class="table-note">
+          Results across unverifiable domains. The <em>Overall</em> score is the mean of the three benchmark scores, 
+          where the two Arena-Hard subsets are first averaged.
+          <strong>Best results</strong> are in bold. <em>H.P.</em> and <em>C.W.</em> denote Hard Prompt and 
+          Creative Writing, respectively. 
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End results -->
+
+<!-- Analysis -->
+<section class="hero is-small" id="analysis">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Analysis</h2>
+
+      <h3 class="title is-4">Ablation Study on Preference Data for Judge Adaptation</h3>
+      <div class="content has-text-justified">
+        <p>
+          <strong>Subtask-amplification pairs matters more once the Solver matures.</strong> Both components, role-asymmetry and
+          subtask-amplification pairs, contribute to the gains over the fixed-Judge baseline, with subtask
+          amplification providing the larger improvement. Removing subtask-amplification pairs leads to a larger
+          performance drop (\(-1.64\)) than removing role-asymmetry pairs (\(-0.97\)). This is consistent with the
+          design of the two pair types. Role-asymmetry pairs teach the Judge to distinguish responses below the
+          Solver's current capability, whereas subtask-amplification pairs expose it to responses beyond the Solver's
+          one-shot frontier, which is critical for continued improvement. Nevertheless, combining the two sources
+          performs best because they are most reliable at different stages of training (see Section 5.1 of the paper
+          for details).
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Verifiable</th>
+              <th>Unverifiable</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>J-Zero</td>
+              <td class="best">54.38</td>
+              <td class="best">21.65</td>
+              <td class="best">38.01</td>
+            </tr>
+            <tr class="rule-above">
+              <td>⊢ ❄️ Frozen Judge</td>
+              <td>52.72</td>
+              <td>16.67</td>
+              <td>34.69</td>
+            </tr>
+            <tr class="rule-above">
+              <td>⊢ w/o subtask-amplification</td>
+              <td>53.20</td>
+              <td>19.73</td>
+              <td>36.46</td>
+            </tr>
+            <tr>
+              <td>⊢ w/o role-asymmetry</td>
+              <td>53.68</td>
+              <td>20.48</td>
+              <td>37.08</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content has-text-justified">
+        <p class="table-note">Ablation results. We disable one component at a time.</p>
+      </div>
+
+      <hr />
+
+      <h3 class="title is-4">Lifelong Learning Capability</h3>
+      <div class="content has-text-justified">
+        <p>
+          Existing LLM self-play methods plateau after only a few iterations: R-Zero and G-Zero peak 
+          at iteration 2 and decline thereafter. J-Zero instead improves monotonically through iteration 10 in both
+          domains.
+          The frozen-Judge variant follows J-Zero closely for the first three iterations and then plateaus. 
+          The divergence point is informative: it is where the Solver reaches the fixed Judge's own 
+          evaluation ceiling, after which the Judge's rewards no longer separate good responses from bad. 
+          A co-evolving Judge keeps its evaluation standard above the Solver's current level, 
+          so the reward signal stays discriminative as the Solver improves.
+        </p>
+      </div>
+
+      <figure class="project-figure">
+        <img
+          loading="lazy"
+          src="{{ '/assets/project_page/images/j_zero/lifelong.png' | relative_url }}"
+          alt="Two line charts of average score per iteration; J-Zero keeps rising through iteration 10 while R-Zero, G-Zero, and the frozen-Judge variant plateau early."
+        />
+        <figcaption class="table-note">
+          Average score per iteration on the verifiable (<strong>left</strong>) and unverifiable
+          (<strong>right</strong>) benchmarks. Each method is plotted up to its best checkpoint.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<!-- End analysis -->

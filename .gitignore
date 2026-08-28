@@ -13,3 +13,7 @@ assets/rendercv/rendercv_output/*.typ
 Gemfile.lock
 node_modules/
 vendor
+
+# Working notes for the project-page build: design spec and implementation log.
+# Kept locally for reference, deliberately not published or committed.
+docs/

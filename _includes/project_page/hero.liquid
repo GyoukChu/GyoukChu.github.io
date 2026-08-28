@@ -1,0 +1,98 @@
+{% assign equal_contributors = page.authors | where: 'equal_contribution', true %}
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">{{ page.title | escape }}</h1>
+
+          {% if page.authors %}
+            <div class="is-size-5 publication-authors">
+              {% for author in page.authors %}
+                <span class="author-block">
+                  {%- if author.url -%}
+                    <a href="{{ author.url | escape }}" target="_blank" rel="noopener">{{ author.name | escape }}</a>
+                  {%- else -%}
+                    {{ author.name | escape }}
+                  {%- endif -%}
+                  {%- if author.affiliations -%}
+                    <sup>{{ author.affiliations | join: ',' }}</sup>
+                  {%- endif -%}
+                  {%- if author.equal_contribution -%}
+                    <sup>*</sup>
+                  {%- endif -%}
+                  {%- unless forloop.last %},{% endunless -%}
+                </span>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if page.affiliations or page.venue or equal_contributors.size > 0 %}
+            <div class="is-size-5 publication-authors">
+              {% if page.affiliations or page.venue %}
+                <!--
+                  AI4CO keeps the affiliations and the venue in one .author-block
+                  separated by a <br>, rather than a separate venue chip. The
+                  affiliation-block class adds a hook that tells this span apart
+                  from a real author, which the verification script needs.
+                -->
+                <span class="author-block affiliation-block">
+                  {%- if page.affiliations -%}
+                    {%- for affiliation in page.affiliations -%}
+                      <sup>{{ forloop.index }}</sup>{{ affiliation | escape }}
+                      {%- unless forloop.last %}&nbsp;&nbsp;{% endunless -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  {%- if page.affiliations and page.venue %}<br>{% endif -%}
+                  {%- if page.venue -%}
+                    <span class="publication-venue">{{ page.venue | escape }}</span>
+                  {%- endif -%}
+                </span>
+              {% endif %}
+
+              {% if equal_contributors.size > 0 %}
+                <span class="eql-cntrb">
+                  <small>
+                    {% if page.affiliations or page.venue %}<br>{% endif %}
+                    <sup>*</sup>equal contribution
+                  </small>
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if page.links %}
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                {% for link in page.links %}
+                  <span class="link-block">
+                    <a
+                      href="{{ link.url | escape }}"
+                      target="_blank"
+                      rel="noopener"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      {%- comment -%}
+                        A link renders either an icon-font glyph (`icon`, a FontAwesome or
+                        academicons class) or a raw emoji (`emoji`) -- the Hugging Face
+                        button is 🤗, which no icon font carries. SmPO and the Nerfies
+                        family render it exactly this way: the emoji as the .icon text.
+                      {%- endcomment -%}
+                      {% if link.emoji %}
+                        <span class="icon">{{ link.emoji | escape }}</span>
+                      {% elsif link.icon %}
+                        <span class="icon"><i class="{{ link.icon | escape }}"></i></span>
+                      {% endif %}
+                      <span>{{ link.label | escape }}</span>
+                    </a>
+                  </span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

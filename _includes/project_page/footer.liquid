@@ -1,0 +1,37 @@
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered project-page-nav">
+            <!--
+              Same name parts al-folio's own _includes/footer.liquid renders, so the
+              two footers cannot disagree if middle_name is ever filled in.
+            -->
+            <a href="{{ '/' | relative_url }}"
+              >&larr; {{ site.first_name }}
+              {{ site.middle_name }}
+              {{ site.last_name -}}
+            </a>
+            <span aria-hidden="true">&nbsp;·&nbsp;</span>
+            <a href="{{ '/projects/' | relative_url }}">All projects</a>
+          </p>
+          <p>
+            This page was built using the
+            <a href="https://github.com/ai4co/research-project-page-template" target="_blank" rel="noopener"> Research Project Page Template</a>
+            and the
+            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">
+              Academic Project Page Template</a
+            >, which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page. You are free to
+            borrow the source code of this website, we just ask that you link back to this page in the footer.
+            <br>
+            This website is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+              Creative Commons Attribution-ShareAlike 4.0 International License</a
+            >.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

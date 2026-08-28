@@ -12,7 +12,11 @@
         %}
       {% endif %}
       <div class="card-body">
-        <h2 class="card-title">{{ project.title }}</h2>
+        {% comment %}
+          card_title lets a project show a short name on the index card while its
+          own page keeps the full title (e.g. "J-Zero" vs the full paper title).
+        {% endcomment %}
+        <h2 class="card-title">{{ project.card_title | default: project.title }}</h2>
         <p class="card-text">{{ project.description }}</p>
         <div class="row ml-1 mr-1 p-0">
           {% if project.github %}
