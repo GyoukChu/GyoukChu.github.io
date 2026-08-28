@@ -39,5 +39,3 @@ I am a M.S. Student at Korea Advanced Institute of Science and Technology (KAIST
 My current research interests focus on advancing the capabilities of **Large Language Models (LLM)**. In particular, my recent research focuses on (1) **LLM datasets and benchmarks** (2) **LLM Post-training, especially Reinforcement Learning (RL)** and (3) **LLM Self-Evolving**.
 
 Ultimately, my research seeks to build upon the foundations of language modeling to pave the way toward **Artificial SuperIntelligence (ASI)** and beyond.
-
-**I am currently seeking any internship opportunities!** With a strong background in large-scale language modeling, reinforcement learning, and dataset curation, I am eager to contribute to real-world, cutting-edge industry projects. If you are looking for a passionate researcher, please feel free to reach out!
