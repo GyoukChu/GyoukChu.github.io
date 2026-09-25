@@ -402,9 +402,9 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-j-zero-unified-challenger-solver-judge-co-evolution-from-zero-data",
-          title: 'J-Zero: Unified Challenger–Solver–Judge Co-Evolution from Zero Data',
-          description: "Sustained LLM self-play without collapse: a unified Challenger–Solver–Judge co-evolution framework across both verifiable and unverifiable domains without any external data.",
+          section: "News",},{id: "projects-j-zero-unified-challenger-solver-judge-self-evolution-from-zero-data",
+          title: 'J-Zero: Unified Challenger–Solver–Judge Self-Evolution from Zero Data',
+          description: "Frozen judges limit LLM self-evolution; co-evolving the judge enables stronger, sustained improvement across verifiable and unverifiable domains.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/j_zero/";
             },},{id: "teachings-data-science-fundamentals",
