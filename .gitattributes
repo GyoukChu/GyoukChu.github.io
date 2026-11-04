@@ -1,2 +1,7 @@
-# Force LF line endings, needed for Docker to work on Windows
+# Normalize all text files to LF in the repository AND in the working tree.
+# Without eol=lf, a Windows checkout (core.autocrlf=true) produces CRLF files,
+# which Prettier flags wholesale because its endOfLine default is "lf".
+* text=auto eol=lf
+
+# Shell scripts must be LF for Docker to work on Windows.
 *.sh text eol=lf

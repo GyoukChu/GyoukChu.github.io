@@ -34,7 +34,7 @@ latest_posts:
 
 I am a M.S. Student at Korea Advanced Institute of Science and Technology (KAIST), advised by Prof. Eunho Yang in Machine Learning and Intelligence Lab (MLILAB), with plans to pursue a Ph.D. in the near future.
 
-**Previously,** I received a B.S. degree in Electrical Engineering and Mathematical Science at KAIST in 2025 (*Summa Cum Laude, 1st in Department of Electrical Engineering*).
+**Previously,** I received a B.S. degree in Electrical Engineering and Mathematical Science at KAIST in 2025 (_Summa Cum Laude, 1st in Department of Electrical Engineering_).
 
 My current research interests focus on advancing the capabilities of **Large Language Models (LLM)**. In particular, my recent research focuses on (1) **LLM post-training, especially Reinforcement Learning (RL)**, (2) **Multi-agent LLM RL**, and (3) **LLM Self-Evolving/Self-Improvement**.
 
